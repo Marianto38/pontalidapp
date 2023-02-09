@@ -45,7 +45,11 @@ gem "bootsnap", require: false
 #claudinary
 gem "cloudinary"
 
-
+#omniauth
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 # Use Sass to process CSS
 gem "sassc-rails"
 
@@ -80,3 +84,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "dockerfile-rails", ">= 1.0", :group => :development
