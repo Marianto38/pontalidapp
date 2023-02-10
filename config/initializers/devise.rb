@@ -282,6 +282,8 @@ Devise.setup do |config|
       image_size: 'square',  # 50x50, guaranteed ratio
       secure_image_url: true
   end
+  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"], access_type: "online"
+
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
