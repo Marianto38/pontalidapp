@@ -1,9 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+
+  has_one_attached :photo
+  # validates :first_name, :last_name, :email, presence: true, length: { minimum: 2 }
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice("provider", "uid")
@@ -31,7 +33,7 @@ class User < ApplicationRecord
     # This line checks if the user email received by the Omniauth is already included in our databases.
       user = User.where(email: auth.info.email).first
     # This line sets the user unless there is a user found in the line above, therefore we use ||= notation to evaluate if the user is nill, then set it to the User.create
-    
+
       user ||= User.create!(provider: auth.provider, uid: auth.uid, email: auth.info.email, password: Devise.friendly_token[0, 20])
       user
     end

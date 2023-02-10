@@ -1,0 +1,151 @@
+<!-- <h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email, required: true, autofocus: true %>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <% end %>
+
+    <%= f.input :password,
+                hint: "leave it blank if you don't want to change it",
+                required: false,
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation,
+                required: false,
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :current_password,
+                hint: "we need your current password to confirm your changes",
+                required: true,
+                input_html: { autocomplete: "current-password" } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Update" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<div class="d-flex align-items-center">
+  <div>Unhappy?</div>
+  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-link" %>
+</div>
+
+<%= link_to "Back", :back %> -->
+<style>
+  .upload-photo {
+    border: 1px solid #badc58;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: 500;
+    background: dark;
+    border-radius: 24px;
+    margin-top: 22px;
+  }
+  </style>
+
+  <div class="row">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-group row">
+      <div class="col-12 col-md-8">
+
+        <div class="card notscale shadow-sm border-0 rounded-4 p-2 my-1 bg-body notscale" style="">
+          <div class="card-body">
+            <h5 class="card-title fw-bold mb-3">Profile details</h5>
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <%= f.input :email,
+                            required: true,
+                            autofocus: true,
+                            input_html: { class: "rounded-3 shadow-sm border-0 rounded-4 px-3 bg-light p-2" } %>
+              </div>
+
+              <div class="col-12 col-sm-6">
+                <%= f.input :first_name,
+                            required: false,
+                            autofocus: true,
+                            input_html: { class: "rounded-3 shadow-sm border-0 rounded-4 px-3 bg-light p-2" } %>
+              </div>
+              <div class="col-12 col-sm-6">
+                <%= f.input :last_name,
+                            required: false,
+                            autofocus: true,
+                            input_html: { class: "rounded-3 shadow-sm border-0 rounded-4 px-3 bg-light p-2" } %>
+              </div>
+              <div class="col-12 col-sm-6 d-flex align-items-center pt-2">
+                <!-- <%#= image_tag current_user.avatar_url, class: "img-fluid avatar-sm me-2" %> -->
+                <%# link_to "Edit your avatar TODO", "#", class: "text-decoration-none" %>
+                <%= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo' %>
+
+              </div>
+              <div class="col-12">
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-12 col-md-4">
+
+        <div class="card shadow-sm border-0 rounded-4 p-2 my-2 bg-body notscale" style="">
+          <div class="card-body">
+            <h5 class="card-title fw-bold mb-3">Change password</h5>
+            <h6 class="text-muted mb-3 fs-08">Leave it blank if you don't want to change it</h6>
+            <div class="row">
+              <div class="col-12">
+                <%= f.input :password,
+                            required: false,
+                            input_html: { autocomplete: "new-password", class: "rounded-3 shadow-sm border-0 rounded-4 px-3 bg-light p-2" } %>
+              </div>
+              <div class="col-12">
+                <%= f.input :password_confirmation,
+                            required: false,
+                            input_html: { autocomplete: "new-password", class: "rounded-3 shadow-sm border-0 rounded-4 px-3 bg-light p-2" } %>
+              </div>
+              </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-12 col-md-8">
+        <div class="card shadow-sm border-2 border-top-0 border-start-0 rounded-4 p-2 my-1 bg-body notscale" style="">
+          <div class="card-body">
+            <h5 class="card-title fw-bold mb-3">We need your current password to confirm your changes</h5>
+            <div class="row align-items-center">
+              <div class="col-12 col-md-8">
+                <%= f.input :current_password,
+                            required: true,
+                            input_html: { autocomplete: "current-password", class: "rounded-3 shadow-sm border-0 rounded-4 bg-light col-7" } %>
+              </div>
+              <div class="form-actions col-12 col-md-4 mt-1 mt-md-3">
+                <%= f.button :submit, "Update my settings", class: "btn btn-success w-100 rounded-4" %>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  <% end %>
+      <div class="col-12 col-md-4">
+        <div class="card shadow-sm rounded-4 p-2 my-2 bg-body notscale" style="">
+          <div class="card-body">
+            <h5 class="card-title fw-bold mb-3 text-danger">Close account</h5>
+            <h6 class="mb-3 fs-08">You can permanently delete your account</h6>
+            <div class="text-center">
+              <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-link border-danger link-danger text-decoration-none w-100 rounded-4" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

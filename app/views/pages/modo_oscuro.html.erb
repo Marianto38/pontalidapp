@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nigmacode designs</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    <div id="page" class="wrapper">
+        <div class="container-fluid">
+            <div class="row text-center">
+              <div class="col-12">
+                <h1 id="nameweb" class="name-web">nigmacode designs</h1>
+              </div>
+              <div class="row sections">
+                <div class="col-4">
+                  <div class="card">
+                      <h2>Proyects</h2>
+                      <img src="img/1.jpg" alt="1">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="card">
+                      <h2>About us</h2>
+                      <img src="img/2.jpg" alt="1">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="card">
+                      <h2>Blog</h2>
+                      <img src="img/3.jpg" alt="1">
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="btn-contact">Contact</div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    Y ésta sería la web:
+
+
+<%# Añadiendo botón modo oscuro para web
+Iremos al HTML de nuestra web, dónde añadiremos un botón con dos iconos, un sol (modo blanco) y una luna (modo oscuro). %>
+
+<div class="container-btn-mode">
+   <div id="id-sun" class="btn-mode sun active">
+      <i class="fas fa-sun"></i>
+   </div>
+   <div id="id-moon" class="btn-mode moon">
+      <i class="fas fa-moon"></i>
+   </div>
+</div>
+
+
+
+<style>
+*{
+    font-family: 'Bungee', cursive;
+}
+body, html{
+    height: 100%;
+    margin:0;
+}
+.wrapper{
+    height: 100%;
+    background-color:white;
+}
+.name-web{
+    margin-top:3rem;
+    font-size: 4rem;
+}
+.content{
+    position:absolute;
+    top:60%;
+    left:50%;
+    width:90%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+.card{
+    display: inline-block;
+    margin:20px;
+    border: 1px solid rgb(207, 207, 207);
+    background-color:white;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: background-color .5s;
+}
+.card h2{
+    font-size: 1.5rem;
+}
+img{
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn-contact{
+    margin: 0 auto;
+    text-align:center;
+    border-radius:5px;
+    width:150px;
+    border:1px solid gray;
+    cursor:pointer;
+    transition: background-color .5s;
+    margin-top:2rem;
+}
+.sections{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.container-btn-mode{
+  position: absolute;
+  top:20px;
+  right: 30px;
+  cursor: pointer;
+  z-index: 2;
+  font-size:0;
+}
+.btn-mode{
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+  border:2px solid black;
+  transition: background-color .5s;
+}
+.btn-mode i {
+  display: block;
+  font-size: 17px;
+  text-align: center;
+  line-height: 30px;
+}
+.btn-mode.sun{
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-right: 1px solid transparent;
+}
+.btn-mode.moon{
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.active{
+  background-color:black;
+  color:#ffcd5c !important;
+}
+</style>
+
+
+<style>
+.dark-mode{
+  background-color: #0e0e0e;
+  transition:background-color .5s;
+}
+.dark-mode .card{
+  background-color: #1A1C1E;
+}
+.dark-mode h1, .dark-mode h2, .dark-mode .btn-contact{
+  color:white;
+}
+.dark-mode .btn-mode{
+  background-color:#1A1C1E;
+  border:1px solid white;
+  color:white;
+}
+</style>
+
+<script>
+/*Si clicamos en el botón del sol, borrarémos la clase css dark-mode del div
+con id page y se aplicará el estilo active al sol*/
+document.getElementById('id-sun').onclick = function(){
+  document.getElementById('page').classList.remove('dark-mode')
+  document.getElementById('id-moon').classList.remove('active')
+  this.classList.add('active')
+}
+/*Si clicamos en el botón de la luna, añadiremos la clase css dark-mode del div
+con id page y se aplicará el estilo active a la luna*/
+document.getElementById('id-moon').onclick = function(){
+  document.getElementById('page').classList.add('dark-mode')
+  document.getElementById('id-sun').classList.remove('active')
+  this.classList.add('active')
+}
+</script>
+
+
+
+</body>
+
+    <script src="index.js"></script>
+</html>
