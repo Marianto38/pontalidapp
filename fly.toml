@@ -5,6 +5,12 @@ kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
+[build]
+  [build.args]
+    BUNDLER_VERSION="2.3.24"
+    NODE_VERSION="16.13.1"
+    RUBY_VERSION="3.1.2"
+
 [env]
 
 [experimental]
