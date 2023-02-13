@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: pontalidapp_production
   username: pontalidapp
   password: <%= ENV["PONTALIDAPP_DATABASE_PASSWORD"] %>
